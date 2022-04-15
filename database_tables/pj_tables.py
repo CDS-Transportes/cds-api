@@ -34,5 +34,9 @@ class SubPessoaJuridica(BaseModel):
     
     data_cadastro= DateTimeField(default=datetime.now)
 
+
+def initAll():
+    db.create_tables([PessoaJuridica, SubPessoaJuridica])
+
    
    

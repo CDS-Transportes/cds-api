@@ -1,6 +1,10 @@
+import email
 from flask import request
-import system_methods.response_build as response_build
 
+import system_methods.response_build as response_build
+from system_methods.hash_string import get_hash
+
+from database_tables.pf_table import initAllTables, PessoaFisca
 
 """
     Sumário:
@@ -18,6 +22,7 @@ import system_methods.response_build as response_build
 
 """
 
+initAllTables()
 
 VALID_METHODS = ['register', 'update', 'auth']
 
@@ -68,25 +73,49 @@ class PFManage():
         self.cpf      = self.request.form.get('cpf')
         self.email    = self.request.form.get('email')
         self.telefone = self.request.form.get('fone')
+        self.senha    = self.request.form.get('senha')
 
 
-        if(self.nome == None or self.cpf == None or self.email == None or self.telefone == None):
-            return response_build.message_response(406, '101', 'MISSING_INPUT')
+        if(self.nome == None or self.cpf == None or self.email == None or self.telefone == None or self.senha == None):
+            return response_build.message_response(400, '101', 'MISSING_INPUT')
         
         if(len(self.nome) > 40):
-            return response_build.message_response(406, '102', 'INVALID_INPUT_NAME')
+            return response_build.message_response(400, '102', 'INVALID_INPUT_NAME')
         
         if(len(self.cpf) != 11):
-            return response_build.message_response(406, '103', 'INVALID_INPUT_CPF')
+            return response_build.message_response(400, '103', 'INVALID_INPUT_CPF')
         
         if(len(self.email) > 40 or '@' not in self.email or '.' not in self.email):
-            return response_build.message_response(406, '104', 'INVALID_INPUT_EMAIL')
+            return response_build.message_response(400, '104', 'INVALID_INPUT_EMAIL')
         
         if(len(self.telefone) < 12 or len(self.telefone) > 13):
-            return response_build.message_response(406, '105', 'INVALID_INPUT_FONE')
+            return response_build.message_response(400, '105', 'INVALID_INPUT_FONE')
 
+        if(len(self.senha) < 8):
+            return response_build.message_response(400, '106', 'INVALID_INPUT_SENHA')
 
-        return response_build.message_response(200, '106', 'REGISTER_SUCCESS')
+        try:
+            tempUser = PessoaFisca(
+                nome    = self.nome,
+                email   = self.email,
+                senha   = get_hash(self.senha),
+                telefone= self.telefone,
+                cpf     = self.cpf
+            )
+
+            tempUser.save()
+
+            return response_build.message_response(200, '107', 'REGISTER_SUCCESS')
+
+        except  Exception as e:
+            if("UNIQUE" in str(e) and "email" in str(e)):
+                return response_build.message_response(400, '108', 'EXIST_EMAIL')
+            if("UNIQUE" in str(e) and "cpf" in str(e)):
+                return response_build.message_response(400, '109', 'EXIST_CPF')
+
+            return response_build.message_response(400, '110', 'REGISTER_FAILED')
+
+        
 
 
 

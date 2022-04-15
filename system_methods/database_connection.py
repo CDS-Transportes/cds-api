@@ -3,10 +3,10 @@ from peewee import MySQLDatabase, SqliteDatabase
 
 def make_connect():
 
-    sql_db = SqliteDatabase('cds_database.db')
+    sql_db = SqliteDatabase('database/cds_database.db')
                          
 
-    return sql_db()
+    return sql_db
 
 
 
