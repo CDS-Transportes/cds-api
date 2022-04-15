@@ -5,7 +5,7 @@
 ## Features
 
 
-- Registro de usuário (PF) - Em progresso
+- Registro de usuário (PF) - Concluido
 - Update de informações do usuário (PF) - Em progresso
 - Autenticação de usuário (PF) - Em progresso
 
