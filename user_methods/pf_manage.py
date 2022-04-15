@@ -1,11 +1,8 @@
 from flask import request
-
 import system_methods.response_build as response_build
 
 
 """
-    Última atualização: 10/04/2022
-
     Sumário:
         Métodos voltados ao gerenciamento de pessoas físicas do app CDS
 
@@ -21,15 +18,16 @@ import system_methods.response_build as response_build
 
 """
 
-class Pf_User():
+
+VALID_METHODS = ['register', 'update', 'auth']
+
+class PFManage():
 
     def __init__(self, request:request):
 
-        self.methods = ['register', 'update', 'auth']
-
-        self.http_method = request.method
-        self.request = request
-        self.request_method = ''
+        self.methods        = VALID_METHODS
+        self.http_method    = request.method
+        self.request        = request
 
         if(self.http_method == 'POST'):
             self.request_method = self.request.form.get('method')
@@ -43,23 +41,34 @@ class Pf_User():
             return response_build.message_response(404, '000', 'METHOD_NOT_FOUND')
 
         if(self.request_method == 'register'):
-            return self.register_method()
+
+            if(self.http_method != 'POST'):
+                return response_build.message_response(405, '100', 'METHOD_NOT_ALLOWED')
+            else:
+                return self.register_method()
 
         elif(self.request_method == 'update'):
-            return response_build.message_response(202, '002', 'METHOD_UPDATE')
-        elif(self.request_method == 'auth'):   
-            return response_build.message_response(202, '003', 'METHOD_AUTH')
+
+            if(self.http_method != 'POST'):
+                return response_build.message_response(405, '200', 'METHOD_NOT_ALLOWED')
+            else:
+                return response_build.message_response(202, '002', 'METHOD_UPDATE')
+
+        elif(self.request_method == 'auth'): 
+
+            if(self.http_method != 'GET'):
+                return response_build.message_response(405, '300', 'METHOD_NOT_ALLOWED')
+            else:
+                return response_build.message_response(202, '003', 'METHOD_AUTH')
         
 
     def register_method(self):
 
-        if(self.http_method != 'POST'):
-            return response_build.message_response(405, '100', 'METHOD_NOT_ALLOWED')
-
-        self.nome = self.request.form.get('nome')
-        self.cpf = self.request.form.get('cpf')
-        self.email = self.request.form.get('email')
+        self.nome     = self.request.form.get('nome')
+        self.cpf      = self.request.form.get('cpf')
+        self.email    = self.request.form.get('email')
         self.telefone = self.request.form.get('fone')
+
 
         if(self.nome == None or self.cpf == None or self.email == None or self.telefone == None):
             return response_build.message_response(406, '101', 'MISSING_INPUT')
@@ -75,6 +84,7 @@ class Pf_User():
         
         if(len(self.telefone) < 12 or len(self.telefone) > 13):
             return response_build.message_response(406, '105', 'INVALID_INPUT_FONE')
+
 
         return response_build.message_response(200, '106', 'REGISTER_SUCCESS')
 

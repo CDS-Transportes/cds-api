@@ -4,9 +4,12 @@
 
 ## Features
 
+
 - Registro de usuário (PF) - Em progresso
 - Update de informações do usuário (PF) - Em progresso
 - Autenticação de usuário (PF) - Em progresso
+
+- Registro de usuário (PJ) - Em progresso
 
 
 ## Instalação
@@ -19,5 +22,9 @@ git clone https://github.com/CDS-Transportes/cds-api.git
 pip install -r requirements.txt
 python main.py
 ```
+
+## Observações
+
+- Para fins de testes, está sendo utilizado o SQLite como SGBD
 
 
