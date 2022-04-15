@@ -4,7 +4,8 @@ from flask import request
 import system_methods.response_build as response_build
 from system_methods.hash_string import get_hash
 
-from database_tables.pf_table import initAllTables, PessoaFisca
+from database_tables.pf_table import PessoaFisca
+from database_tables.users_tables import initAllTables, UsuariosPF
 
 """
     Sumário:
@@ -75,7 +76,6 @@ class PFManage():
         self.telefone = self.request.form.get('fone')
         self.senha    = self.request.form.get('senha')
 
-
         if(self.nome == None or self.cpf == None or self.email == None or self.telefone == None or self.senha == None):
             return response_build.message_response(400, '101', 'MISSING_INPUT')
         
@@ -98,13 +98,25 @@ class PFManage():
             tempUser = PessoaFisca(
                 nome    = self.nome,
                 email   = self.email,
-                senha   = get_hash(self.senha),
                 telefone= self.telefone,
                 cpf     = self.cpf
             )
-
             tempUser.save()
 
+            tempUserID = (
+                PessoaFisca
+                .select()
+                .where(PessoaFisca.cpf == self.cpf)
+                .get()
+            )
+
+            tempAuthUser = UsuariosPF(
+                pf_id   = tempUserID.id,
+                email   = self.email,
+                senha   = get_hash(self.senha)
+            )
+            tempAuthUser.save()
+            
             return response_build.message_response(200, '107', 'REGISTER_SUCCESS')
 
         except  Exception as e:
@@ -114,6 +126,8 @@ class PFManage():
                 return response_build.message_response(400, '109', 'EXIST_CPF')
 
             return response_build.message_response(400, '110', 'REGISTER_FAILED')
+
+    
 
         
 

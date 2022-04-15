@@ -1,6 +1,4 @@
-from enum import unique
-from peewee import Model, CharField, DateTimeField
-from datetime import datetime
+from peewee import Model, CharField
 
 import system_methods.database_connection as database
 
@@ -14,14 +12,9 @@ class PessoaFisca(BaseModel):
 
     nome         = CharField(max_length=40)
     email        = CharField(max_length=40, unique=True)
-    senha        = CharField(max_length=32)
     telefone     = CharField(max_length=13)
     cpf          = CharField(max_length=11, unique=True)
 
-    data_cadastro= DateTimeField(default=datetime.now)
 
 
-
-def initAllTables():
-    db.create_tables([PessoaFisca])
    
