@@ -30,14 +30,14 @@ python main.py
 ## Retornos Sistema 0XX
 
 | HTTP Status | Código | Menssagem | Descrição |
-| ------ | ------ |
+| ------ | ------ | ------ | ------ |
 | 404 | 000 | METHOD_NOT_FOUND | O método solicitado não foi encontrado |
 
 
 ## Retornos Método Register 1XX (PF)
 
 | HTTP Status | Código | Menssagem | Descrição |
-| ------ | ------ |
+| ------ | ------ | ------ | ------ |
 | 405 | 100 | METHOD_NOT_ALLOWED | Foi utilizado um método HTTP inválido |
 | 400 | 101 | MISSING_INPUT | Nem todos os inputs foram enviados |
 | 400 | 102 | INVALID_INPUT_NAME | O campo nome excedeu 40 caracteres |
