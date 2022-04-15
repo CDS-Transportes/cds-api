@@ -16,7 +16,7 @@ class PessoaFisca(BaseModel):
     email        = CharField(max_length=40, unique=True)
     senha        = CharField(max_length=32)
     telefone     = CharField(max_length=13)
-    cpf          = CharField(max_length=11)
+    cpf          = CharField(max_length=11, unique=True)
 
     data_cadastro= DateTimeField(default=datetime.now)
 
