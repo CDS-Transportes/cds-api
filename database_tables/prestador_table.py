@@ -1,4 +1,5 @@
 import email
+from enum import unique
 from peewee import Model, CharField, DateTimeField, BooleanField, ForeignKeyField, IntegerField
 from datetime import datetime
 
@@ -13,9 +14,9 @@ class BaseModel(Model):
 class Prestador(BaseModel):
     
     nome         = CharField(max_length=40)
-    email        = CharField(max_length=40)
+    email        = CharField(max_length=40, unique=True)
     telefone     = CharField(max_length=13)
-    cnpj         = CharField(max_length=14)
+    cnpj         = CharField(max_length=14, unique=True)
 
     e_contratante= BooleanField()
 

@@ -5,7 +5,7 @@ from datetime import datetime
 import system_methods.database_connection as database
 
 from database_tables.contratante_table import Contratante
-from database_tables.pestador_table import Prestador
+from database_tables.prestador_table import Prestador
 
 db = database.make_connect()
 
