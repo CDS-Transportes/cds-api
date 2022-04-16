@@ -79,7 +79,7 @@ function register(){
         formdata.append("cpf", $("#cpf").val());
         formdata.append("senha", $("#senha").val());
 
-        fetch('http://127.0.0.1:5000/pfuser', {
+        fetch('http://127.0.0.1:5000/api/v1/pfuser', {
             method: "POST",
             redirect: 'manual',
             body: formdata

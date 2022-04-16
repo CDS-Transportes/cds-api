@@ -1,3 +1,4 @@
+import email
 from peewee import Model, CharField, DateTimeField, BooleanField, ForeignKeyField, IntegerField
 from datetime import datetime
 
@@ -9,9 +10,10 @@ class BaseModel(Model):
     class Meta:
         database = db
 
-class PessoaJuridica(BaseModel):
+class Prestador(BaseModel):
     
     nome         = CharField(max_length=40)
+    email        = CharField(max_length=40)
     telefone     = CharField(max_length=13)
     cnpj         = CharField(max_length=14)
 

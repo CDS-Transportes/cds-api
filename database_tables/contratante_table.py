@@ -8,7 +8,7 @@ class BaseModel(Model):
     class Meta:
         database = db
 
-class PessoaFisca(BaseModel):
+class Contratante(BaseModel):
 
     nome         = CharField(max_length=40)
     email        = CharField(max_length=40, unique=True)

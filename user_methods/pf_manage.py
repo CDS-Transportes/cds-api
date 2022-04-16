@@ -4,8 +4,8 @@ from flask import request
 import system_methods.response_build as response_build
 from system_methods.hash_string import get_hash
 
-from database_tables.pf_table import PessoaFisca
-from database_tables.users_tables import initAllTables, UsuariosPF
+from database_tables.contratante_table import Contratante
+from database_tables.usuarios_tables import initAllTables, Usuarios
 
 """
     Sumário:
@@ -95,7 +95,7 @@ class PFManage():
             return response_build.message_response(400, '106', 'INVALID_INPUT_SENHA')
 
         try:
-            tempUser = PessoaFisca(
+            tempUser = Contratante(
                 nome    = self.nome,
                 email   = self.email,
                 telefone= self.telefone,
@@ -103,15 +103,9 @@ class PFManage():
             )
             tempUser.save()
 
-            tempUserID = (
-                PessoaFisca
-                .select()
-                .where(PessoaFisca.cpf == self.cpf)
-                .get()
-            )
 
-            tempAuthUser = UsuariosPF(
-                pf_id   = tempUserID.id,
+            tempAuthUser = Usuarios(
+                pf_id   = tempUser.id,
                 email   = self.email,
                 senha   = get_hash(self.senha)
             )
