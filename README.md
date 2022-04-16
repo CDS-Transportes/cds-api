@@ -5,11 +5,11 @@
 ## Features
 
 
-- Registro de usuário (PF) - Concluido
+- Registro de usuário Contratante (PF) - Concluido
 - Update de informações do usuário (PF) - Em progresso
 - Autenticação de usuário (PF) - Em progresso
 
-- Registro de usuário (PJ) - Em progresso
+- Registro de usuário Contratante (PJ) - Em progresso
 
 
 ## Instalação
