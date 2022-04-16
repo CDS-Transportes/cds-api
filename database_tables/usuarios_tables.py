@@ -1,4 +1,3 @@
-from asyncio.windows_events import NULL
 from peewee import Model, CharField, DateTimeField, ForeignKeyField, IntegerField
 from datetime import datetime
 
@@ -6,6 +5,9 @@ import system_methods.database_connection as database
 
 from database_tables.contratante_table import Contratante
 from database_tables.prestador_table import Prestador
+from database_tables.perfil_table import Perfil_Prestador
+from database_tables.servicos_table import Servicos
+
 
 db = database.make_connect()
 
@@ -30,5 +32,5 @@ class Usuarios(BaseModel):
 
 
 def initAllTables():
-    db.create_tables([Contratante, Prestador, Usuarios])
+    db.create_tables([Contratante, Prestador, Usuarios, Servicos, Perfil_Prestador])
    

@@ -1,7 +1,4 @@
-import email
-from enum import unique
-from peewee import Model, CharField, DateTimeField, BooleanField, ForeignKeyField, IntegerField
-from datetime import datetime
+from peewee import Model, CharField, BooleanField
 
 import system_methods.database_connection as database
 
