@@ -21,7 +21,7 @@
 | 405 | 100 | METHOD_NOT_ALLOWED | Foi utilizado um método HTTP inválido |
 | 400 | 101 | MISSING_INPUT | Nem todos os inputs foram enviados |
 | 400 | 102 | INVALID_INPUT_NAME | O campo nome excedeu 40 caracteres |
-| 400 | 103 | INVALID_INPUT_CPF | O campo cpf é menor ou maior do que 11 caracteres |
+| 400 | 103 | INVALID_INPUT_CNPJ | O campo cnpj é menor ou maior do que 14 caracteres |
 | 400 | 104 | INVALID_INPUT_EMAIL | O campo email é inválido |
 | 400 | 105 | INVALID_INPUT_FONE | O campo fone é inválido |
 | 400 | 106 | INVALID_INPUT_SENHA | O campo senha é inválido |
