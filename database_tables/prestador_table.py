@@ -15,7 +15,7 @@ class Prestador(BaseModel):
     telefone     = CharField(max_length=13)
     cnpj         = CharField(max_length=14, unique=True)
 
-    e_contratante= BooleanField()
+    e_contratante= BooleanField(default=False)
 
 
 

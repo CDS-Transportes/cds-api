@@ -20,13 +20,16 @@ def register_prestador(nome, email, telefone, doc, senha):
             )
             tempUser.save()
 
+            try:
+                tempAuthUser = Usuarios(
+                    pj_id   = tempUser.id,
+                    email   = email,
+                    senha   = get_hash(senha)
+                )
+                tempAuthUser.save()
+            except:
+                Usuarios.update({Usuarios.pj_id: tempUser.id}).where(Usuarios.email == email).execute()
 
-            tempAuthUser = Usuarios(
-                pj_id   = tempUser.id,
-                email   = email,
-                senha   = get_hash(senha)
-            )
-            tempAuthUser.save()
             
             return response_build.message_response(200, '108', 'REGISTER_SUCCESS')
 
@@ -35,8 +38,10 @@ def register_prestador(nome, email, telefone, doc, senha):
         if(("UNIQUE" in str(e) and "email" in str(e)) or ("Duplicate" in str(e) and "email" in str(e))):
             return response_build.message_response(400, '109', 'EXIST_EMAIL')
 
-        if(("UNIQUE" in str(e) and "doc" in str(e)) or ("Duplicate" in str(e) and "doc" in str(e))):
+        if(("UNIQUE" in str(e) and "cnpj" in str(e)) or ("Duplicate" in str(e) and "cnpj" in str(e))):
             return response_build.message_response(400, '111', 'EXIST_CNPJ')
+
+        print(e)
 
         return response_build.message_response(400, '112', 'REGISTER_FAILED')
 
@@ -53,13 +58,17 @@ def register_contratante(nome, email, telefone, doc, senha):
             )
             tempUser.save()
 
-            tempAuthUser = Usuarios(
-                pf_id   = tempUser.id,
-                email   = email,
-                senha   = get_hash(senha)
-            )
-            tempAuthUser.save()
-            
+            try:
+                tempAuthUser = Usuarios(
+                    pf_id   = tempUser.id,
+                    email   = email,
+                    senha   = get_hash(senha)
+                )
+                tempAuthUser.save()
+            except:
+                Usuarios.update({Usuarios.pf_id: tempUser.id}).where(Usuarios.email == email).execute()
+     
+
             return response_build.message_response(200, '108', 'REGISTER_SUCCESS')
 
     except  Exception as e:

@@ -1,9 +1,11 @@
 import system_methods.response_build as response_build
 from system_methods.hash_string import get_hash
+import system_methods.create_jwt as jwt
 
 from database_tables.contratante_table import Contratante
 from database_tables.prestador_table import Prestador
 from database_tables.usuarios_tables import initAllTables, Usuarios
+
 
 initAllTables()
 
@@ -11,21 +13,25 @@ def auth_prestador(email, senha):
     try:
         tmpUser = (
             Usuarios
-            .select(Usuarios.pj_id, Usuarios.nivel)
+            .select()
             .where(Usuarios.email == email and Usuarios.senha == get_hash(senha))
             .get()
             )
 
         nivel = tmpUser.nivel
+        user_id = tmpUser.pj_id
+
 
         tmpUser = (
             Prestador
             .select()
-            .where(Contratante.id == tmpUser.pj_id)
+            .where(Prestador.id == tmpUser.pj_id)
             .get()
         )
 
-        return response_build.login_success('205', tmpUser.id, tmpUser.nome, tmpUser.telefone, tmpUser.cnpj, nivel)
+        userJwt = jwt.create(str(user_id), tmpUser.email, tmpUser.nome)
+
+        return response_build.login_success('205', tmpUser.nome, nivel, userJwt, 1)
 
     except Exception as e:
 
@@ -42,7 +48,8 @@ def auth_contratante(email, senha):
             .get()
             )
 
-        nivel = tmpUser.nivel
+        nivel   = tmpUser.nivel
+        user_id = tmpUser.pf_id
 
         tmpUser = (
             Contratante
@@ -51,12 +58,12 @@ def auth_contratante(email, senha):
             .get()
         )
 
-        return response_build.login_success('205', tmpUser.id, tmpUser.nome, tmpUser.telefone, tmpUser.doc, nivel)
+        userJwt = jwt.create(str(user_id), tmpUser.email, tmpUser.nome)
+
+        return response_build.login_success('205', tmpUser.nome, nivel, userJwt, 0)
 
     except Exception as e:
-
         print(e)
-
         return response_build.message_response(401, '206', 'WRONG_USER_PASSWORD')
 
 
