@@ -84,6 +84,10 @@ function register(){
             redirect: 'manual',
             body: formdata
         }).then(response => response.text()).then(result => verifyResult(JSON.parse(result)))
+
+
+
+
     }
     
 }

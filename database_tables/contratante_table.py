@@ -13,7 +13,7 @@ class Contratante(BaseModel):
     nome         = CharField(max_length=40)
     email        = CharField(max_length=40, unique=True)
     telefone     = CharField(max_length=13)
-    cpf          = CharField(max_length=11, unique=True)
+    doc          = CharField(max_length=14, unique=True)
 
 
 
