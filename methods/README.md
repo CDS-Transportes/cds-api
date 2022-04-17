@@ -12,8 +12,8 @@
 | 200 | 108 | REGISTER_SUCCESS | O registro foi efetuado com sucesso |
 | 400 | 109 | EXIST_EMAIL | O email já está cadastrado |
 | 400 | 110 | EXIST_CPF | O cpf já está cadastrado |
-| 400 | 110 | EXIST_CNPJ | O cnpj já está cadastrado |
-| 400 | 111 | REGISTER_FAILED | O registro falhou (Erro no DB) |
+| 400 | 111 | EXIST_CNPJ | O cnpj já está cadastrado |
+| 400 | 112 | REGISTER_FAILED | O registro falhou (Erro no DB) |
 
 
 ## Retornos de login

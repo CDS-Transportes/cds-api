@@ -36,9 +36,9 @@ def register_prestador(nome, email, telefone, doc, senha):
             return response_build.message_response(400, '109', 'EXIST_EMAIL')
 
         if(("UNIQUE" in str(e) and "doc" in str(e)) or ("Duplicate" in str(e) and "doc" in str(e))):
-            return response_build.message_response(400, '112', 'EXIST_CNPJ')
+            return response_build.message_response(400, '111', 'EXIST_CNPJ')
 
-        return response_build.message_response(400, '111', 'REGISTER_FAILED')
+        return response_build.message_response(400, '112', 'REGISTER_FAILED')
 
 
 
@@ -70,7 +70,7 @@ def register_contratante(nome, email, telefone, doc, senha):
         if(("UNIQUE" in str(e) and "doc" in str(e)) or ("Duplicate" in str(e) and "doc" in str(e))):
             return response_build.message_response(400, '110', 'EXIST_CPF')
 
-        return response_build.message_response(400, '111', 'REGISTER_FAILED')
+        return response_build.message_response(400, '112', 'REGISTER_FAILED')
 
 
 
