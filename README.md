@@ -6,8 +6,9 @@
 
 
 - Registro de usuário Contratante (PF) - Concluido
+- Autenticação de usuário (PF) - Concluido
 - Update de informações do usuário (PF) - Em progresso
-- Autenticação de usuário (PF) - Em progresso
+
 
 - Registro de usuário Contratante (PJ) - Concluido
 - Registro de usuário Prestador (PJ) - Em progresso

@@ -11,25 +11,24 @@ def make_connect():
 
 
 
-""" 
 
-MYSQL_USERNAME = 'cds_integracao'
-MYSQL_PASS = '123'
+"""
+MYSQL_USERNAME = 'cds_user'
+MYSQL_PASS = '12345678'
 MYSQL_HOST = '127.0.0.1'
 MYSQL_PORT = 3306
 
 def make_connect():
 
     mysql_db = MySQLDatabase(
-                        'CDS_API',
+                        'cds_database',
                          user=MYSQL_USERNAME,
                          password=MYSQL_PASS,
                          host=MYSQL_HOST,
                          port=MYSQL_PORT
                          )
 
-    return mysql_db()
-
-"""
+    return mysql_db
+ """
 
 

@@ -30,3 +30,16 @@
 | 400 | 109 | EXIST_EMAIL | O email já está cadastrado |
 | 400 | 110 | EXIST_CNPJ | O cnpj já está cadastrado |
 | 400 | 111 | REGISTER_FAILED | O registro falhou (Erro no DB) |
+
+
+## Retornos Login PF
+
+| HTTP Status | Código | Mensagem | Descrição |
+| ------ | ------ | ------ | ------ |
+| 405 | 200 | METHOD_NOT_ALLOWED | Foi utilizado um método HTTP inválido |
+| 400 | 201 | MISSING_INPUT | Nem todos os inputs foram enviados |
+| 400 | 202 | INVALID_INPUT_EMAIL | O campo email é inválido |
+| 400 | 203 | INVALID_INPUT_SENHA | O campo senha é inválido |
+| 200 | 204 | USER_INFO | Login efetuado com sucesso |
+| 401 | 205 | WRONG_USER_PASSWORD | Email ou Senha incorretos |
+

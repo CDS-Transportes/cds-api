@@ -18,14 +18,15 @@ from database_tables.usuarios_tables import initAllTables, Usuarios
 
     Códigos de retorno:
         register: 1XX
-        update: 2XX
-        auth: 3XX
+        login: 2XX
+        update: 3XX
+        
 
 """
 
 initAllTables()
 
-VALID_METHODS = ['register', 'update', 'auth']
+VALID_METHODS = ['register', 'update', 'login']
 
 class PFManage():
 
@@ -53,19 +54,19 @@ class PFManage():
             else:
                 return self.register_method()
 
+        elif(self.request_method == 'login'): 
+
+            if(self.http_method != 'GET'):
+                return response_build.message_response(405, '200', 'METHOD_NOT_ALLOWED')
+            else:
+                return self.login_method()
+
         elif(self.request_method == 'update'):
 
             if(self.http_method != 'POST'):
-                return response_build.message_response(405, '200', 'METHOD_NOT_ALLOWED')
-            else:
-                return response_build.message_response(202, '002', 'METHOD_UPDATE')
-
-        elif(self.request_method == 'auth'): 
-
-            if(self.http_method != 'GET'):
                 return response_build.message_response(405, '300', 'METHOD_NOT_ALLOWED')
             else:
-                return response_build.message_response(202, '003', 'METHOD_AUTH')
+                return response_build.message_response(202, '002', 'METHOD_UPDATE')
         
 
     def register_method(self):
@@ -114,14 +115,55 @@ class PFManage():
             return response_build.message_response(200, '107', 'REGISTER_SUCCESS')
 
         except  Exception as e:
-            if("UNIQUE" in str(e) and "email" in str(e)):
+            if(("UNIQUE" in str(e) and "email" in str(e)) or ("Duplicate" in str(e) and "email" in str(e))):
                 return response_build.message_response(400, '108', 'EXIST_EMAIL')
-            if("UNIQUE" in str(e) and "cpf" in str(e)):
+            if(("UNIQUE" in str(e) and "cpf" in str(e)) or ("Duplicate" in str(e) and "cpf" in str(e))):
                 return response_build.message_response(400, '109', 'EXIST_CPF')
+
+            print(e)
 
             return response_build.message_response(400, '110', 'REGISTER_FAILED')
 
-    
+
+    def login_method(self):
+        self.email    = self.request.args.get('email')
+        self.senha    = self.request.args.get('senha')
+
+        if(self.email == None or self.senha == None):
+            return response_build.message_response(400, '201', 'MISSING_INPUT')
+
+
+        if(len(self.email) > 40 or '@' not in self.email or '.' not in self.email):
+            return response_build.message_response(400, '202', 'INVALID_INPUT_EMAIL')
+
+        if(len(self.senha) < 8):
+            return response_build.message_response(400, '203', 'INVALID_INPUT_SENHA')
+
+        try:
+            tmpUser = (
+                Usuarios
+                .select(Usuarios.pf_id, Usuarios.nivel)
+                .where(Usuarios.email == self.email and Usuarios.senha == get_hash(self.senha))
+                .get()
+            )
+
+            nivel = tmpUser.nivel
+
+            tmpUser = (
+                Contratante
+                .select()
+                .where(Contratante.id == tmpUser.pf_id)
+                .get()
+            )
+
+            return response_build.login_success('204', tmpUser.id, tmpUser.nome, tmpUser.telefone, tmpUser.cpf, nivel)
+
+        except Exception as e:
+
+            print(e)
+
+            return response_build.message_response(400, '205', 'WRONG_USER_PASSWORD')
+            
 
         
 

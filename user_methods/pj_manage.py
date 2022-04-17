@@ -112,9 +112,9 @@ class PJManage():
             return response_build.message_response(200, '108', 'REGISTER_SUCCESS')
 
         except  Exception as e:
-            if("UNIQUE" in str(e) and "email" in str(e)):
+            if(("UNIQUE" in str(e) and "email" in str(e)) or ("Duplicate" in str(e) and "email" in str(e))):
                 return response_build.message_response(400, '109', 'EXIST_EMAIL')
-            if("UNIQUE" in str(e) and "cnpj" in str(e)):
+            if(("UNIQUE" in str(e) and "cnpj" in str(e)) or ("Duplicate" in str(e) and "cnpj" in str(e))):
                 return response_build.message_response(400, '110', 'EXIST_CNPJ')
 
             return response_build.message_response(400, '111', 'REGISTER_FAILED')
