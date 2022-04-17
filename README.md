@@ -37,6 +37,7 @@ python main.py
 
 
 ## [Retornos Método Register 1XX](https://github.com/CDS-Transportes/cds-api/tree/main/user_methods)
+## [Retornos Método Login 2XX](https://github.com/CDS-Transportes/cds-api/tree/main/user_methods)
 
 
 
