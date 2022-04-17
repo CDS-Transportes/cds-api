@@ -25,4 +25,4 @@
 | 400 | 203 | INVALID_INPUT_SENHA | O campo senha é inválido |
 | 400 | 204 | INVALID_INPUT_TYPE | O tipo de usuário é inválido |
 | 200 | 205 | USER_INFO | O login foi realizado com sucesso |
-| 400 | 206 | WRONG_USER_PASSWORD | Email e/ou senha inválidos |
+| 401 | 206 | WRONG_USER_PASSWORD | Email e/ou senha inválidos |

@@ -36,8 +36,8 @@ python main.py
 | 404 | 000 | METHOD_NOT_FOUND | O método solicitado não foi encontrado |
 
 
-## [Retornos Método Register 1XX](https://github.com/CDS-Transportes/cds-api/tree/main/user_methods)
-## [Retornos Método Login 2XX](https://github.com/CDS-Transportes/cds-api/tree/main/user_methods)
+## [Retornos Método Register 1XX](https://github.com/CDS-Transportes/cds-api/tree/main/methods)
+## [Retornos Método Login 2XX](https://github.com/CDS-Transportes/cds-api/tree/main/methods)
 
 
 

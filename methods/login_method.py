@@ -31,7 +31,7 @@ def auth_prestador(email, senha):
 
         print(e)
 
-        return response_build.message_response(400, '206', 'WRONG_USER_PASSWORD')
+        return response_build.message_response(401, '206', 'WRONG_USER_PASSWORD')
 
 def auth_contratante(email, senha):
     try:
@@ -57,7 +57,7 @@ def auth_contratante(email, senha):
 
         print(e)
 
-        return response_build.message_response(400, '206', 'WRONG_USER_PASSWORD')
+        return response_build.message_response(401, '206', 'WRONG_USER_PASSWORD')
 
 
 def login_method(request):
