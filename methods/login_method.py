@@ -72,6 +72,8 @@ def login_method(request):
     senha    = request.args.get('senha')
     type     = request.args.get('type')
 
+    
+
     if(email == None or senha == None or type == None):
         return response_build.message_response(400, '201', 'MISSING_INPUT')
 

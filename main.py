@@ -31,6 +31,7 @@ def update_perfil_route():
     respose = register_perfil(request)
     return respose
 
+
 @cds_api.route("/api/v1/get_perfil", methods=['GET'])
 @cross_origin()
 def get_perfil_route():

@@ -1,4 +1,5 @@
 from flask import request
+import json
 
 import system_methods.response_build as response_build
 from system_methods.hash_string import get_hash
@@ -87,13 +88,23 @@ def register_contratante(nome, email, telefone, doc, senha):
 
 
 def register_method(request):
+        try:            
+            nome     = request.get_json()[0]['nome']
+            doc      = request.get_json()[0]['doc']
+            email    = request.get_json()[0]['email']
+            telefone = request.get_json()[0]['fone']
+            senha    = request.get_json()[0]['senha']
+            type     = request.get_json()[0]['type']
 
-        nome     = request.form.get('nome')
-        doc      = request.form.get('doc')
-        email    = request.form.get('email')
-        telefone = request.form.get('fone')
-        senha    = request.form.get('senha')
-        type     = request.form.get('type')
+        except:
+            nome     = request.form.get('nome')
+            doc      = request.form.get('doc')
+            email    = request.form.get('email')
+            telefone = request.form.get('fone')
+            senha    = request.form.get('senha')
+            type     = request.form.get('type')
+  
+        
 
         if(nome == None or doc == None or email == None or telefone == None or senha == None or type == None):
             return response_build.message_response(400, '101', 'MISSING_INPUT')
