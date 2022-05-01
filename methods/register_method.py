@@ -7,6 +7,7 @@ from database_tables.contratante_table import Contratante
 from database_tables.prestador_table import Prestador
 from database_tables.usuarios_tables import initAllTables, Usuarios
 
+
 initAllTables()
 
 #Método para registro de usuários prestadores
@@ -19,6 +20,7 @@ def register_prestador(nome, email, telefone, doc, senha):
                 cnpj          = doc,
             )
             tempUser.save()
+
 
             try:
                 tempAuthUser = Usuarios(

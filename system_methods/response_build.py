@@ -17,3 +17,13 @@ def login_success(cod, nome, nivel, jwt, type):
     )
 
     return respJson, 200
+
+
+def pefil_success(cod, bio, uf, cidade, foto):
+    
+    respJson = jsonify(
+        {"COD": cod, "PERFIL_INFO": {"BIO": bio,"UF": uf, "CIDADE": cidade, "FOTO": foto}}
+
+    )
+
+    return respJson, 200

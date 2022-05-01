@@ -11,7 +11,8 @@
 
 
 - Registro de usuário Contratante (PJ) - Concluido
-- Registro de usuário Prestador (PJ) - Em progresso
+- Registro de usuário Prestador (PJ) - Concluido
+- Registro de perfil Prestador (PJ) - Em progresso
 
 
 ## Instalação
@@ -38,6 +39,8 @@ python main.py
 
 ## [Retornos Método Register 1XX](https://github.com/CDS-Transportes/cds-api/tree/main/methods)
 ## [Retornos Método Login 2XX](https://github.com/CDS-Transportes/cds-api/tree/main/methods)
+## [Retornos Método Registro/Update Perfil 3XX](https://github.com/CDS-Transportes/cds-api/tree/main/methods)
+## [Retornos Método Get Perfil 4XX](https://github.com/CDS-Transportes/cds-api/tree/main/methods)
 
 
 

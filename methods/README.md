@@ -26,3 +26,28 @@
 | 400 | 204 | INVALID_INPUT_TYPE | O tipo de usuário é inválido |
 | 200 | 205 | USER_INFO | O login foi realizado com sucesso |
 | 401 | 206 | WRONG_USER_PASSWORD | Email e/ou senha inválidos |
+
+
+## Retornos de registro/update de perfil
+
+| HTTP Status | Código | Menssagem | Descrição |
+| ------ | ------ | ------ | ------ |
+| 400 | 301 | MISSING_INPUT | Nem todos os inputs foram enviados |
+| 401 | 302 | INVALID_TOKEN | O token enviado não é válido |
+| 400 | 303 | INVALID_USER_TYPE | O tipo do usuário é inválido |
+| 201 | 304 | CREATED_PERFIL_SUCCESS| O pefil sem foto foi criado com sucesso |
+| 201 | 305 | UPDATED_PERFIL_SUCCESS | A atualização sem foto do perfil foi concluida |
+| 401 | 306 | IMAGE_UPLOAD_FAILED | Houve uma falha no upload da imagem |
+| 201 | 307 | CREATED_PERFIL_SUCCESS| O pefil com foto foi criado com sucesso |
+| 201 | 308 | UPDATED_PERFIL_SUCCESS | A atualização com foto do perfil foi concluida |
+
+
+## Retornos de get pefil
+
+| HTTP Status | Código | Menssagem | Descrição |
+| ------ | ------ | ------ | ------ |
+| 400 | 401 | MISSING_INPUT | Nem todos os inputs foram enviados |
+| 401 | 402 | INVALID_TOKEN | O token enviado não é válido |
+| 400 | 403 | INVALID_USER_TYPE | O tipo do usuário é inválido |
+| 201 | 404 | PERFIL_INFO | O pefil foi retornado com sucesso |
+| 201 | 405 | NON-EXISTENT_PROFILE | O perfil não existe |

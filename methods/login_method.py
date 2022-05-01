@@ -29,7 +29,7 @@ def auth_prestador(email, senha):
             .get()
         )
 
-        userJwt = jwt.create(str(user_id), tmpUser.email, tmpUser.nome)
+        userJwt = jwt.create(str(user_id), tmpUser.email, tmpUser.nome, 1)
 
         return response_build.login_success('205', tmpUser.nome, nivel, userJwt, 1)
 
@@ -58,7 +58,7 @@ def auth_contratante(email, senha):
             .get()
         )
 
-        userJwt = jwt.create(str(user_id), tmpUser.email, tmpUser.nome)
+        userJwt = jwt.create(str(user_id), tmpUser.email, tmpUser.nome, 0)
 
         return response_build.login_success('205', tmpUser.nome, nivel, userJwt, 0)
 

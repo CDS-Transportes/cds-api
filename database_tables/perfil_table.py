@@ -1,3 +1,4 @@
+from enum import unique
 from peewee import Model, CharField, ForeignKeyField, TextField
 
 from database_tables.prestador_table import Prestador
@@ -12,9 +13,9 @@ class BaseModel(Model):
 
 class Perfil_Prestador(BaseModel):
 
-    id_prestador = ForeignKeyField(Prestador, backref='idpj')
+    id_prestador = ForeignKeyField(Prestador, backref='idpj', unique=True)
     biografia    = TextField(null=True)
-    foto         = CharField(max_length=32, null=True)
+    foto         = CharField(max_length=160, null=True)
     uf           = CharField(max_length=2, null=True)
     cidade       = CharField(max_length=20, null=True)
 
