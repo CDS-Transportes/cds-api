@@ -1,0 +1,1078 @@
+{
+	"info": {
+		"_postman_id": "a8a2a0e4-c3dd-47bd-bdfa-b9db462baca7",
+		"name": "CDS Transportes API",
+		"description": "API em Flask (Python), para utilização na aplicação CDS Transportes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Registro e Login",
+			"item": [
+				{
+					"name": "Registro de Usuário",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"nome\": \"Usuario\",\r\n        \"email\": \"usuario@usuario.com\",\r\n        \"senha\": \"123456789\",\r\n        \"type\": \"0\", //0 Para Contratante e 1 Para Prestadora\r\n        \"fone\": \"551145457878\",\r\n        \"doc\": \"15123123000112\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/api/v1/register",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"register"
+							]
+						},
+						"description": "***Registro de usuários***"
+					},
+					"response": [
+						{
+							"name": "Contratante",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[{\"nome\": \"Usuario\",\"email\": \"usuario@usuario.com\",\"senha\": \"123456789\",\"type\": \"0\",\"fone\": \"551145457878\",\"doc\": \"12312312312\"}]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/v1/register",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"v1",
+										"register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Werkzeug/2.1.1 Python/3.10.1"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 01 May 2022 15:14:32 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "39"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"COD\": \"108\",\n    \"MSG\": \"REGISTER_SUCCESS\"\n}"
+						},
+						{
+							"name": "Prestador",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[{\"nome\": \"Usuario\",\"email\": \"usuario@usuario.com\",\"senha\": \"123456789\",\"type\": \"1\",\"fone\": \"551145457878\",\"doc\": \"12123123000112\"}]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/v1/register",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"v1",
+										"register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Werkzeug/2.1.1 Python/3.10.1"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 01 May 2022 15:15:15 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "39"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"COD\": \"108\",\n    \"MSG\": \"REGISTER_SUCCESS\"\n}"
+						},
+						{
+							"name": "Contratante - CPF Cadastrado",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[{\"nome\": \"Usuario\",\"email\": \"usuario@usuario.com\",\"senha\": \"123456789\",\"type\": \"0\",\"fone\": \"551145457878\",\"doc\": \"12312312312\"}]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/v1/register",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"v1",
+										"register"
+									]
+								}
+							},
+							"status": "BAD REQUEST",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Werkzeug/2.1.1 Python/3.10.1"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 01 May 2022 15:20:21 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "32"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"COD\": \"110\",\n    \"MSG\": \"EXIST_CPF\"\n}"
+						},
+						{
+							"name": "Prestador - CNPJ Cadastrado",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[{\"nome\": \"Usuario\",\"email\": \"usuario@usuario.com\",\"senha\": \"123456789\",\"type\": \"1\",\"fone\": \"551145457878\",\"doc\": \"12123123000112\"}]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/v1/register",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"v1",
+										"register"
+									]
+								}
+							},
+							"status": "BAD REQUEST",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Werkzeug/2.1.1 Python/3.10.1"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 01 May 2022 15:20:53 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "33"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"COD\": \"111\",\n    \"MSG\": \"EXIST_CNPJ\"\n}"
+						},
+						{
+							"name": "Contratante/Prestador - Email Cadastrado",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[{\"nome\": \"Usuario\",\"email\": \"usuario@usuario.com\",\"senha\": \"123456789\",\"type\": \"1\",\"fone\": \"551145457878\",\"doc\": \"15123123000112\"}]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/v1/register",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"v1",
+										"register"
+									]
+								}
+							},
+							"status": "BAD REQUEST",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Werkzeug/2.1.1 Python/3.10.1"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 01 May 2022 15:21:41 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "34"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"COD\": \"109\",\n    \"MSG\": \"EXIST_EMAIL\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Login de Usuário",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/api/v1/login?email=usuario@usuario.com&senha=12345678&type=0",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"login"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "usuario@usuario.com"
+								},
+								{
+									"key": "senha",
+									"value": "12345678"
+								},
+								{
+									"key": "type",
+									"value": "0"
+								}
+							]
+						},
+						"description": "***Autenticação de usuários***"
+					},
+					"response": [
+						{
+							"name": "Contratante",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/v1/login?email=usuario@usuario.com&senha=123456789&type=0",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"v1",
+										"login"
+									],
+									"query": [
+										{
+											"key": "email",
+											"value": "usuario@usuario.com"
+										},
+										{
+											"key": "senha",
+											"value": "123456789"
+										},
+										{
+											"key": "type",
+											"value": "0"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Werkzeug/2.1.1 Python/3.10.1"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 01 May 2022 15:24:14 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "257"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"COD\": \"205\",\n    \"USER_INFO\": {\n        \"NIVEL\": 0,\n        \"NOME\": \"Pedro\",\n        \"TOKEN\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJJRCI6IjEiLCJFTUFJTCI6InBlZHJvQHBlZHJvLmNvbSIsIlVTRVIiOiJQZWRybyIsIlRZUEUiOjAsImV4cCI6MTY1MTQzNjY1NH0.gzmdJNz86q_ZbNazMgb-bSU8EWRsxQIvhetg_N0JYjc\",\n        \"TYPE\": 0\n    }\n}"
+						},
+						{
+							"name": "Prestadora",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/v1/login?email=usuario@usuario.com&senha=123456789&type=1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"v1",
+										"login"
+									],
+									"query": [
+										{
+											"key": "email",
+											"value": "usuario@usuario.com"
+										},
+										{
+											"key": "senha",
+											"value": "123456789"
+										},
+										{
+											"key": "type",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Werkzeug/2.1.1 Python/3.10.1"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 01 May 2022 15:24:44 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "257"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"COD\": \"205\",\n    \"USER_INFO\": {\n        \"NIVEL\": 0,\n        \"NOME\": \"Pedro\",\n        \"TOKEN\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJJRCI6IjEiLCJFTUFJTCI6InBlZHJvQHBlZHJvLmNvbSIsIlVTRVIiOiJQZWRybyIsIlRZUEUiOjEsImV4cCI6MTY1MTQzNjY4NH0.8pBViCLzk4oKuJqNRwf7MONCV6bz26Ao99y2vVhG3o8\",\n        \"TYPE\": 1\n    }\n}"
+						},
+						{
+							"name": "Contratante - Falha",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/v1/login?email=usuario@usuario.com&senha=12345678&type=0",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"v1",
+										"login"
+									],
+									"query": [
+										{
+											"key": "email",
+											"value": "usuario@usuario.com"
+										},
+										{
+											"key": "senha",
+											"value": "12345678"
+										},
+										{
+											"key": "type",
+											"value": "0"
+										}
+									]
+								}
+							},
+							"status": "UNAUTHORIZED",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Werkzeug/2.1.1 Python/3.10.1"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 01 May 2022 15:25:03 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "42"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"COD\": \"206\",\n    \"MSG\": \"WRONG_USER_PASSWORD\"\n}"
+						},
+						{
+							"name": "Prestadora - Falha",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/v1/login?email=usuario@usuario.com&senha=12345678&type=1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"v1",
+										"login"
+									],
+									"query": [
+										{
+											"key": "email",
+											"value": "usuario@usuario.com"
+										},
+										{
+											"key": "senha",
+											"value": "12345678"
+										},
+										{
+											"key": "type",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "UNAUTHORIZED",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Werkzeug/2.1.1 Python/3.10.1"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 01 May 2022 15:25:19 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "42"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"COD\": \"206\",\n    \"MSG\": \"WRONG_USER_PASSWORD\"\n}"
+						}
+					]
+				}
+			],
+			"description": "Requisições para registro e login de usuários"
+		},
+		{
+			"name": "Gerência de Perfil - Prestadora (Pessoal)",
+			"item": [
+				{
+					"name": "Cadastro / Update de Perfil",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJJRCI6IjEiLCJFTUFJTCI6InBlZHJvQHBlZHJvLmNvbSIsIlVTRVIiOiJQZWRybyIsIlRZUEUiOjEsImV4cCI6MTY1MTQzNjY4NH0.8pBViCLzk4oKuJqNRwf7MONCV6bz26Ao99y2vVhG3o",
+									"type": "text"
+								},
+								{
+									"key": "uf",
+									"value": "SP",
+									"type": "text"
+								},
+								{
+									"key": "cidade",
+									"value": "São Paulo",
+									"type": "text"
+								},
+								{
+									"key": "bio",
+									"value": "Sou uma ótima transportadora",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/api/v1/update_perfil",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"update_perfil"
+							]
+						},
+						"description": "***Registro ou atualização de perfil***"
+					},
+					"response": [
+						{
+							"name": "Com foto",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJJRCI6IjEiLCJFTUFJTCI6InBlZHJvQHBlZHJvLmNvbSIsIlVTRVIiOiJQZWRybyIsIlRZUEUiOjEsImV4cCI6MTY1MTQzNjY4NH0.8pBViCLzk4oKuJqNRwf7MONCV6bz26Ao99y2vVhG3o8",
+											"type": "text"
+										},
+										{
+											"key": "uf",
+											"value": "SP",
+											"type": "text"
+										},
+										{
+											"key": "cidade",
+											"value": "São Paulo",
+											"type": "text"
+										},
+										{
+											"key": "bio",
+											"value": "Sou uma ótima transportadora",
+											"type": "text"
+										},
+										{
+											"key": "foto",
+											"type": "file",
+											"src": "/D:/Arquivos de Usuário/Images/índice.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/v1/update_perfil",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"v1",
+										"update_perfil"
+									]
+								}
+							},
+							"status": "CREATED",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Werkzeug/2.1.1 Python/3.10.1"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 01 May 2022 15:32:59 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "45"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"COD\": \"308\",\n    \"MSG\": \"UPDATED_PERFIL_SUCCESS\"\n}"
+						},
+						{
+							"name": "Sem foto",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJJRCI6IjEiLCJFTUFJTCI6InBlZHJvQHBlZHJvLmNvbSIsIlVTRVIiOiJQZWRybyIsIlRZUEUiOjEsImV4cCI6MTY1MTQzNjY4NH0.8pBViCLzk4oKuJqNRwf7MONCV6bz26Ao99y2vVhG3o8",
+											"type": "text"
+										},
+										{
+											"key": "uf",
+											"value": "SP",
+											"type": "text"
+										},
+										{
+											"key": "cidade",
+											"value": "São Paulo",
+											"type": "text"
+										},
+										{
+											"key": "bio",
+											"value": "Sou uma ótima transportadora",
+											"type": "text"
+										},
+										{
+											"key": "foto",
+											"type": "file",
+											"src": "/D:/Arquivos de Usuário/Images/índice.png",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/v1/update_perfil",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"v1",
+										"update_perfil"
+									]
+								}
+							},
+							"status": "CREATED",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Werkzeug/2.1.1 Python/3.10.1"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 01 May 2022 15:33:24 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "45"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"COD\": \"305\",\n    \"MSG\": \"UPDATED_PERFIL_SUCCESS\"\n}"
+						},
+						{
+							"name": "Token Inválido",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJJRCI6IjEiLCJFTUFJTCI6InBlZHJvQHBlZHJvLmNvbSIsIlVTRVIiOiJQZWRybyIsIlRZUEUiOjEsImV4cCI6MTY1MTQzNjY4NH0.8pBViCLzk4oKuJqNRwf7MONCV6bz26Ao99y2vVhG3o",
+											"type": "text"
+										},
+										{
+											"key": "uf",
+											"value": "SP",
+											"type": "text"
+										},
+										{
+											"key": "cidade",
+											"value": "São Paulo",
+											"type": "text"
+										},
+										{
+											"key": "bio",
+											"value": "Sou uma ótima transportadora",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/v1/update_perfil",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"v1",
+										"update_perfil"
+									]
+								}
+							},
+							"status": "UNAUTHORIZED",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Werkzeug/2.1.1 Python/3.10.1"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 01 May 2022 15:40:05 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "36"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"COD\": \"302\",\n    \"MSG\": \"INVALID_TOKEN\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Coleta de Perfil de Usuário",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/api/v1/get_perfil?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJJRCI6IjEiLCJFTUFJTCI6InBlZHJvQHBlZHJvLmNvbSIsIlVTRVIiOiJQZWRybyIsIlRZUEUiOjEsImV4cCI6MTY1MTQzNjY4NH0.8pBViCLzk4oKuJqNRwf7MONCV6bz26Ao99y2vVhG3o",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"get_perfil"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJJRCI6IjEiLCJFTUFJTCI6InBlZHJvQHBlZHJvLmNvbSIsIlVTRVIiOiJQZWRybyIsIlRZUEUiOjEsImV4cCI6MTY1MTQzNjY4NH0.8pBViCLzk4oKuJqNRwf7MONCV6bz26Ao99y2vVhG3o"
+								}
+							]
+						},
+						"description": "***Coleta de Perfil***"
+					},
+					"response": [
+						{
+							"name": "Retorno de Perfil",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/v1/get_perfil?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJJRCI6IjEiLCJFTUFJTCI6InBlZHJvQHBlZHJvLmNvbSIsIlVTRVIiOiJQZWRybyIsIlRZUEUiOjEsImV4cCI6MTY1MTQzNjY4NH0.8pBViCLzk4oKuJqNRwf7MONCV6bz26Ao99y2vVhG3o8",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"v1",
+										"get_perfil"
+									],
+									"query": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJJRCI6IjEiLCJFTUFJTCI6InBlZHJvQHBlZHJvLmNvbSIsIlVTRVIiOiJQZWRybyIsIlRZUEUiOjEsImV4cCI6MTY1MTQzNjY4NH0.8pBViCLzk4oKuJqNRwf7MONCV6bz26Ao99y2vVhG3o8"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Werkzeug/2.1.1 Python/3.10.1"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 01 May 2022 15:41:22 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "159"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"COD\": \"404\",\n    \"PERFIL_INFO\": {\n        \"BIO\": \"Sou uma ótima transportadora\",\n        \"CIDADE\": \"São Paulo\",\n        \"FOTO\": \"https://i.ibb.co/sCdXW9G/9b14ba87efa1.jpg\",\n        \"UF\": \"SP\"\n    }\n}"
+						},
+						{
+							"name": "Token Inválido",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/v1/get_perfil?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJJRCI6IjEiLCJFTUFJTCI6InBlZHJvQHBlZHJvLmNvbSIsIlVTRVIiOiJQZWRybyIsIlRZUEUiOjEsImV4cCI6MTY1MTQzNjY4NH0.8pBViCLzk4oKuJqNRwf7MONCV6bz26Ao99y2vVhG3o",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"v1",
+										"get_perfil"
+									],
+									"query": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJJRCI6IjEiLCJFTUFJTCI6InBlZHJvQHBlZHJvLmNvbSIsIlVTRVIiOiJQZWRybyIsIlRZUEUiOjEsImV4cCI6MTY1MTQzNjY4NH0.8pBViCLzk4oKuJqNRwf7MONCV6bz26Ao99y2vVhG3o"
+										}
+									]
+								}
+							},
+							"status": "UNAUTHORIZED",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Werkzeug/2.1.1 Python/3.10.1"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 01 May 2022 15:41:49 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "36"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"COD\": \"402\",\n    \"MSG\": \"INVALID_TOKEN\"\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}

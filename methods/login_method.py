@@ -14,7 +14,7 @@ def auth_prestador(email, senha):
         tmpUser = (
             Usuarios
             .select()
-            .where(Usuarios.email == email and Usuarios.senha == get_hash(senha))
+            .where(Usuarios.email == email).where(Usuarios.senha == get_hash(senha))
             .get()
             )
 
@@ -22,6 +22,8 @@ def auth_prestador(email, senha):
         user_id = tmpUser.pj_id
 
 
+        print(tmpUser.email)    
+        
         tmpUser = (
             Prestador
             .select()
@@ -34,8 +36,6 @@ def auth_prestador(email, senha):
         return response_build.login_success('205', tmpUser.nome, nivel, userJwt, 1)
 
     except Exception as e:
-
-        print(e)
 
         return response_build.message_response(401, '206', 'WRONG_USER_PASSWORD')
 
@@ -63,7 +63,6 @@ def auth_contratante(email, senha):
         return response_build.login_success('205', tmpUser.nome, nivel, userJwt, 0)
 
     except Exception as e:
-        print(e)
         return response_build.message_response(401, '206', 'WRONG_USER_PASSWORD')
 
 

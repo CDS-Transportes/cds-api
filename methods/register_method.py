@@ -44,8 +44,6 @@ def register_prestador(nome, email, telefone, doc, senha):
         if(("UNIQUE" in str(e) and "cnpj" in str(e)) or ("Duplicate" in str(e) and "cnpj" in str(e))):
             return response_build.message_response(400, '111', 'EXIST_CNPJ')
 
-        print(e)
-
         return response_build.message_response(400, '112', 'REGISTER_FAILED')
 
 
@@ -88,14 +86,15 @@ def register_contratante(nome, email, telefone, doc, senha):
 
 
 def register_method(request):
-        try:            
-            nome     = request.get_json()[0]['nome']
-            doc      = request.get_json()[0]['doc']
-            email    = request.get_json()[0]['email']
-            telefone = request.get_json()[0]['fone']
-            senha    = request.get_json()[0]['senha']
-            type     = request.get_json()[0]['type']
-
+        
+        try:                        
+            nome     = request.json[0]['nome']
+            doc      = request.json[0]['doc']
+            email    = request.json[0]['email']
+            telefone = request.json[0]['fone']           
+            type     = request.json[0]['type']
+            senha    = request.json[0]['senha']
+            
         except:
             nome     = request.form.get('nome')
             doc      = request.form.get('doc')
@@ -103,8 +102,9 @@ def register_method(request):
             telefone = request.form.get('fone')
             senha    = request.form.get('senha')
             type     = request.form.get('type')
-  
-        
+
+    
+
 
         if(nome == None or doc == None or email == None or telefone == None or senha == None or type == None):
             return response_build.message_response(400, '101', 'MISSING_INPUT')

@@ -27,3 +27,18 @@ def pefil_success(cod, bio, uf, cidade, foto):
     )
 
     return respJson, 200
+
+
+def index_response(perfis, page):
+    
+    respJson = '[{"COD": "603", "PERFIS":{'
+    
+    for perfil in perfis:
+
+        respJson += '{"BIO": "'+perfil.biografia+'", "FOTO": "'+perfil.foto+'", "UF": "'+perfil.uf+'", "CIDADE": "'+perfil.cidade+'"},'
+        
+    respJson += '}]'
+    
+    respJson = respJson.replace(',}]', '}]')
+    
+    return respJson, 200
