@@ -7,12 +7,13 @@
 
 - Registro de usuário Contratante (PF) - Concluido
 - Autenticação de usuário (PF) - Concluido
-- Update de informações do usuário (PF) - Em progresso
-
+- Update de informações do usuário (PF) - Concluido
+- Gerenciamento de servicos (PF) - Em andamento
 
 - Registro de usuário Contratante (PJ) - Concluido
 - Registro de usuário Prestador (PJ) - Concluido
-- Registro de perfil Prestador (PJ) - Em progresso
+- Registro de perfil Prestador (PJ) - Concluido
+- Gerenciamento de servicos (PJ) - Em andamento
 
 
 ## Instalação
