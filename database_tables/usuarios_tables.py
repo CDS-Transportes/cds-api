@@ -20,10 +20,12 @@ class Usuarios(BaseModel):
     pf_id        = ForeignKeyField(Contratante, backref='idpf', null=True)
     pj_id        = ForeignKeyField(Prestador, backref='idpj', null=True)
 
-    email        = CharField(max_length=40, unique=True)
+    email        = CharField(max_length=40)
     senha        = CharField(max_length=32)
 
     nivel        = IntegerField(default=0)
+
+    type         = IntegerField()
 
     data_cadastro= DateTimeField(default=datetime.now)
 

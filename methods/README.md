@@ -9,11 +9,15 @@
 | 400 | 105 | INVALID_INPUT_FONE | O campo fone é inválido |
 | 400 | 106 | INVALID_INPUT_SENHA | O campo senha é inválido |
 | 200 | 107 | INVALID_INPUT_TYPE | O tipo de usuário é inválido |
-| 200 | 108 | REGISTER_SUCCESS | O registro foi efetuado com sucesso |
-| 400 | 109 | EXIST_EMAIL | O email já está cadastrado |
-| 400 | 110 | EXIST_CPF | O cpf já está cadastrado |
-| 400 | 111 | EXIST_CNPJ | O cnpj já está cadastrado |
-| 400 | 112 | REGISTER_FAILED | O registro falhou (Erro no DB) |
+| 400 | 108 | INVALID_DOC_FORMAT | O formtado do documento PF é invalido |
+| 400 | 109 | INVALID_DOC_FORMAT | O formtado do documento PJ é invalido |
+| 400 | 110 | EXIST_USER | Usuário e senha já cadastrados |
+| 400 | 111 | EXIST_USER_DOC_TYPE | Já existe um usuário do tipo espeficiado para o documento enviado |
+| 200 | 112 | REGISTER_SUCCESS | Registro realizado com sucesso |
+| 400 | 113 | EXIST_CNPJ | O cnpj já está cadastrado |
+| 400 | 114 | REGISTER_FAILED | Houve uma falha no registro |
+| 400 | 115 | EXIST_EMAIL | O email já está cadastrado |
+| 400 | 116 | EXIST_CPF | O cpf já está cadastrado |
 
 
 ## Retornos de login
@@ -23,9 +27,8 @@
 | 400 | 201 | MISSING_INPUT | Nem todos os inputs foram enviados |
 | 400 | 202 | INVALID_INPUT_EMAIL | O campo email é inválido |
 | 400 | 203 | INVALID_INPUT_SENHA | O campo senha é inválido |
-| 400 | 204 | INVALID_INPUT_TYPE | O tipo de usuário é inválido |
-| 200 | 205 | USER_INFO | O login foi realizado com sucesso |
-| 401 | 206 | WRONG_USER_PASSWORD | Email e/ou senha inválidos |
+| 200 | 204 | USER_INFO | O login foi realizado com sucesso |
+| 401 | 205 | WRONG_USER_PASSWORD | Email e/ou senha inválidos |
 
 
 ## Retornos de registro/update de perfil
@@ -51,3 +54,14 @@
 | 400 | 403 | INVALID_USER_TYPE | O tipo do usuário é inválido |
 | 201 | 404 | PERFIL_INFO | O pefil foi retornado com sucesso |
 | 201 | 405 | NON-EXISTENT_PROFILE | O perfil não existe |
+
+
+## Retornos de index
+
+| HTTP Status | Código | Menssagem | Descrição |
+| ------ | ------ | ------ | ------ |
+| 400 | 601 | MISSING_INPUT | Nem todos os inputs foram enviados |
+| 401 | 602 | INVALID_TOKEN | O token enviado não é válido |
+| 400 | 603 | PERFIS | Index de transportadores retornado com sucesso |
+
+

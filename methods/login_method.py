@@ -9,71 +9,54 @@ from database_tables.usuarios_tables import initAllTables, Usuarios
 
 initAllTables()
 
-def auth_prestador(email, senha):
+def auth(email, senha):
     try:
-        tmpUser = (
+        tmpAuthUser = (
             Usuarios
             .select()
             .where(Usuarios.email == email).where(Usuarios.senha == get_hash(senha))
             .get()
-            )
-
-        nivel = tmpUser.nivel
-        user_id = tmpUser.pj_id
-
-
-        print(tmpUser.email)    
-        
-        tmpUser = (
-            Prestador
-            .select()
-            .where(Prestador.id == tmpUser.pj_id)
-            .get()
         )
 
-        userJwt = jwt.create(str(user_id), tmpUser.email, tmpUser.nome, 1)
+        user_type = tmpAuthUser.type
 
-        return response_build.login_success('205', tmpUser.nome, nivel, userJwt, 1)
-
-    except Exception as e:
-
-        return response_build.message_response(401, '206', 'WRONG_USER_PASSWORD')
-
-def auth_contratante(email, senha):
-    try:
-        tmpUser = (
-            Usuarios
-            .select(Usuarios.pf_id, Usuarios.nivel)
-            .where(Usuarios.email == email and Usuarios.senha == get_hash(senha))
-            .get()
-            )
-
-        nivel   = tmpUser.nivel
-        user_id = tmpUser.pf_id
-
-        tmpUser = (
+        if(user_type == 0):
+            tmpUser = (
             Contratante
-            .select()
-            .where(Contratante.id == tmpUser.pf_id)
-            .get()
-        )
+                .select()
+                .where(Contratante.id == tmpAuthUser.pf_id_id)
+                .get()
+            )
+        elif(user_type == 1):
+            tmpUser = (
+            Prestador
+                .select()
+                .where(Prestador.id == tmpAuthUser.pj_id_id)
+                .get()
+            )
+        else:
+            tmpUser = (
+                Contratante
+                .select()
+                .where(Contratante.id == tmpAuthUser.pj_id_id)
+                .get()
+            )
 
-        userJwt = jwt.create(str(user_id), tmpUser.email, tmpUser.nome, 0)
+        user_id = tmpUser.id
 
-        return response_build.login_success('205', tmpUser.nome, nivel, userJwt, 0)
+        userJwt = jwt.create(str(user_id), tmpAuthUser.email, tmpUser.nome, tmpAuthUser.type)
+
+        return response_build.login_success('201', tmpUser.nome, tmpAuthUser.nivel, userJwt, tmpAuthUser.type)
 
     except Exception as e:
-        return response_build.message_response(401, '206', 'WRONG_USER_PASSWORD')
+        return response_build.message_response(401, '205', 'WRONG_USER_PASSWORD')
 
 
 def login_method(request):
     email    = request.args.get('email')
     senha    = request.args.get('senha')
-    type     = request.args.get('type')
 
-    
-
-    if(email == None or senha == None or type == None):
+    if(email == None or senha == None):
         return response_build.message_response(400, '201', 'MISSING_INPUT')
 
 
@@ -83,12 +66,10 @@ def login_method(request):
     if(len(senha) < 8):
         return response_build.message_response(400, '203', 'INVALID_INPUT_SENHA')
 
-    if(type != '0' and type != '1'):
-            return response_build.message_response(400, '204', 'INVALID_INPUT_TYPE')
+    return auth(email, senha)
 
-    
-    if(type == '0'):
-        return auth_contratante(email, senha)
 
-    else:
-        return auth_prestador(email, senha)
+
+def login_system(email, senha):
+    return auth(email, senha)
+
