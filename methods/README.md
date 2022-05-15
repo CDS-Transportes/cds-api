@@ -83,5 +83,6 @@
 | 200 | 718 | COLLABORATOR_DELETED | Colaborador deletado com sucesso |
 | 400 | 719, 722 | COLLABORATOR_NOT_EXIST | Colaborador não existe |
 | 200 | 726 | COLLABORATOR_UPDATED | Colaborador atualizado com sucesso |
+| 200 | 728 | COLABORADORES | Lista de colaboradores retornada com sucesso |
 
 
