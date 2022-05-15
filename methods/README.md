@@ -65,3 +65,23 @@
 | 400 | 603 | PERFIS | Index de transportadores retornado com sucesso |
 
 
+## Retornos de collaborator
+
+| HTTP Status | Código | Menssagem | Descrição |
+| ------ | ------ | ------ | ------ |
+| 400 | 701, 708, 716 e 720 | MISSING_INPUT | Nem todos os inputs foram enviados |
+| 404 | 702 | METHOD_NOT_FOUND | O método solicitado não existe |
+| 401 | 703 | INVALID_TOKEN | O token enviado não é válido |
+| 405 | 704, 705, 706 e 707 | HTTP_METHOD_NOT_ALLOWED | O método http não é permitido |
+| 400 | 709, 725 | INVALID_INPUT_NAME | O campo nome excedeu 40 caracteres |
+| 400 | 710 | INVALID_INPUT_EMAIL | O campo email é inválido |
+| 400 | 711, 723 | INVALID_INPUT_SENHA | O campo senha é inválido |
+| 400 | 712, 724 | INVALID_INPUT_NIVEL | O campo nivel é inválido |
+| 400 | 713, 717, 721, 727 | USER_NOT_AUTHORIZED | O usuário não possui permissão para a tarefa |
+| 400 | 714 | EMAIL_IN_USE | O email já está em uso |
+| 201 | 715 | COLLABORATOR_CREATED | Colaborador criado com sucesso |
+| 200 | 718 | COLLABORATOR_DELETED | Colaborador deletado com sucesso |
+| 400 | 719, 722 | COLLABORATOR_NOT_EXIST | Colaborador não existe |
+| 200 | 726 | COLLABORATOR_UPDATED | Colaborador atualizado com sucesso |
+
+

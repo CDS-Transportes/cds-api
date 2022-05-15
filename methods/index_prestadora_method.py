@@ -34,7 +34,4 @@ def get_index(request):
 
     tempPerfil = Perfil_Prestador.select().order_by(Perfil_Prestador.id).paginate(pageStart, pageFinal) 
     
-    for perfil in tempPerfil:
-        print(perfil)
-    
     return response_build.index_response(tempPerfil, page)

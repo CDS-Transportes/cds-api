@@ -42,6 +42,7 @@ def register_prestador(nome, email, telefone, doc, senha):
                     tempAuthUser = Usuarios(
                     pj_id   = tempUser.id,
                     email   = email,
+                    nome    = nome,
                     senha   = get_hash(senha),
                     type    = 1
                     )
@@ -57,6 +58,7 @@ def register_prestador(nome, email, telefone, doc, senha):
                 tempAuthUser = Usuarios(
                     pj_id   = tempUser.id,
                     email   = email,
+                    nome    = nome,
                     senha   = get_hash(senha),
                     type    = 1
                 )
@@ -104,6 +106,7 @@ def register_contratante_pj(nome, email, telefone, doc, senha):
                     tempAuthUser = Usuarios(
                     pj_id   = tempUser.id,
                     email   = email,
+                    nome    = nome,
                     senha   = get_hash(senha),
                     type    = 2
                     )
@@ -119,6 +122,7 @@ def register_contratante_pj(nome, email, telefone, doc, senha):
                 tempAuthUser = Usuarios(
                     pj_id   = tempUser.id,
                     email   = email,
+                    nome    = nome,
                     senha   = get_hash(senha),
                     type    = 2
                 )
@@ -149,6 +153,7 @@ def register_contratante_pf(nome, email, telefone, doc, senha):
                 tempAuthUser = Usuarios(
                     pf_id   = tempUser.id,
                     email   = email,
+                    nome    = nome,
                     senha   = get_hash(senha),
                     type    = 0
                 )

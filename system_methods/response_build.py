@@ -42,3 +42,16 @@ def index_response(perfis, page):
     respJson = respJson.replace(',}]', '}]')
     
     return respJson, 200
+
+def collaborators_response(collaborators):
+    respJson = '[{"COD": "728", "COLABORADORES":{'
+
+    for colab in collaborators:
+
+        respJson += '{"NOME": "'+str(colab.nome)+'", "NIVEL": "'+str(colab.nivel)+'", "EMAIL": "'+str(colab.email)+'"},'
+
+    respJson += '}]'
+
+    respJson = respJson.replace(',}]', '}]')
+
+    return respJson, 200

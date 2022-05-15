@@ -7,6 +7,7 @@ from methods.login_method import login_method
 from methods.register_perfil_method import register_perfil
 from methods.get_perfil_method import get_perfil
 from methods.index_prestadora_method import get_index
+from methods.collaborator_method import direct_collaborator_method
 
 cds_api = Flask(__name__)
 init_docs(cds_api)
@@ -39,11 +40,20 @@ def get_perfil_route():
     response = get_perfil(request)
     return response
 
+
 @cds_api.route("/api/v1/index", methods=['GET'])
 @cross_origin()
 def index_route():
     response = get_index(request)
     return response
+
+
+@cds_api.route("/api/v1/collaborator", methods=['GET', 'POST'])
+@cross_origin()
+def collaborator_route():
+    response = direct_collaborator_method(request)
+    return response
+
 
 
 cds_api.run(debug=True)

@@ -44,9 +44,9 @@ def auth(email, senha):
 
         user_id = tmpUser.id
 
-        userJwt = jwt.create(str(user_id), tmpAuthUser.email, tmpUser.nome, tmpAuthUser.type)
+        userJwt = jwt.create(str(user_id), tmpAuthUser.email, tmpAuthUser.nome, tmpAuthUser.type, tmpAuthUser.nivel)
 
-        return response_build.login_success('201', tmpUser.nome, tmpAuthUser.nivel, userJwt, tmpAuthUser.type)
+        return response_build.login_success('201', tmpAuthUser.nome, tmpAuthUser.nivel, userJwt, tmpAuthUser.type)
 
     except Exception as e:
         return response_build.message_response(401, '205', 'WRONG_USER_PASSWORD')

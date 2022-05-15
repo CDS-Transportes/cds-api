@@ -23,6 +23,8 @@ class Usuarios(BaseModel):
     email        = CharField(max_length=40)
     senha        = CharField(max_length=32)
 
+    nome         = CharField(max_length=40)
+
     nivel        = IntegerField(default=0)
 
     type         = IntegerField()
