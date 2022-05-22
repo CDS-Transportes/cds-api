@@ -41,6 +41,24 @@ def request_method(request, token):
     return response_build.message_response(201, '514', 'SERVICE_REQUESTED')
 
 
+def list_method(request, token):
+    if(token['NIVEL'] != 0 and token['NIVEL'] != 2):
+        return response_build.message_response(401, '515', 'USER_NOT_AUTHORIZED')
+
+    if(token['TYPE'] == 1):
+        tempServicos = (
+            Servicos.select()
+            .where(Servicos.id_prestador == token['ID'])
+        )
+    else:
+        tempServicos = (
+            Servicos.select()
+            .where(Servicos.id_contratante == token['ID'])
+        )
+
+    return response_build.services_response(tempServicos)
+
+
 def create_method(request, token):
     return 'a'
 
@@ -49,8 +67,6 @@ def update_method(request):
     return 'a'
 
 
-def list_method(request):
-    return 'a'
 
 
 def track_method(request):
@@ -108,7 +124,7 @@ def direct_services_method(request):
         if(request.method != 'GET'):
             return response_build.message_response(405, '506', 'METHOD_NOT_ALLOWED')
 
-        return list_method(request)
+        return list_method(request, tokenDecoded)
 
     elif(method == 'track'):
         if(request.method != 'GET'):

@@ -31,7 +31,7 @@ def pefil_success(cod, bio, uf, cidade, foto):
 
 def index_response(perfis, page):
     
-    respJson = '[{"COD": "603", "PERFIS":{'
+    respJson = '[{"COD": "603", "PERFIS":'
     
     for perfil in perfis:
 
@@ -44,11 +44,28 @@ def index_response(perfis, page):
     return respJson, 200
 
 def collaborators_response(collaborators):
-    respJson = '[{"COD": "728", "COLABORADORES":{'
+    respJson = '[{"COD": "728", "COLABORADORES":'
 
     for colab in collaborators:
 
         respJson += '{"NOME": "'+str(colab.nome)+'", "NIVEL": "'+str(colab.nivel)+'", "EMAIL": "'+str(colab.email)+'"},'
+
+    respJson += '}]'
+
+    respJson = respJson.replace(',}]', '}]')
+
+    return respJson, 200
+
+
+def services_response(services):
+    respJson = '[{"COD": "516", "SERVICOS":'
+
+
+
+
+    for servico in services:
+
+        respJson += '{"SERV_COD": "'+str(servico.serv_cod)+'", "ID_PRESTADOR": "'+str(servico.id_prestador)+'", "ENDR_INICIAL": "'+str(servico.endr_inical)+'", "ENDR_FINAL": "'+str(servico.endr_final)+'", "STATUS": "'+str(servico.status)+'"},'
 
     respJson += '}]'
 
