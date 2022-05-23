@@ -4,7 +4,7 @@ from system_methods.valid_jwt import valid
 
 import system_methods.response_build as response_build
 
-METHOD_AVAILABLE = ['request','create','update','list','track','accept','cancel']
+METHOD_AVAILABLE = ['request','create','update','list','accept','cancel']
 
 def request_method(request, token):
 
@@ -41,6 +41,7 @@ def request_method(request, token):
     return response_build.message_response(201, '514', 'SERVICE_REQUESTED')
 
 
+
 def list_method(request, token):
     if(token['NIVEL'] != 0 and token['NIVEL'] != 2):
         return response_build.message_response(401, '515', 'USER_NOT_AUTHORIZED')
@@ -64,12 +65,6 @@ def create_method(request, token):
 
 
 def update_method(request):
-    return 'a'
-
-
-
-
-def track_method(request):
     return 'a'
 
 
@@ -126,11 +121,6 @@ def direct_services_method(request):
 
         return list_method(request, tokenDecoded)
 
-    elif(method == 'track'):
-        if(request.method != 'GET'):
-            return response_build.message_response(405, '507', 'METHOD_NOT_ALLOWED')
-
-        return track_method(request)
 
     elif(method == 'request'):
         if(request.method != 'POST'):

@@ -60,9 +60,6 @@ def collaborators_response(collaborators):
 def services_response(services):
     respJson = '[{"COD": "516", "SERVICOS":'
 
-
-
-
     for servico in services:
 
         respJson += '{"SERV_COD": "'+str(servico.serv_cod)+'", "ID_PRESTADOR": "'+str(servico.id_prestador)+'", "ENDR_INICIAL": "'+str(servico.endr_inical)+'", "ENDR_FINAL": "'+str(servico.endr_final)+'", "STATUS": "'+str(servico.status)+'"},'
