@@ -29,8 +29,6 @@ def register_perfil(request):
 
     if(tokenData['TYPE'] != 1):
         return response_build.message_response(401, '303', 'INVALID_USER_TYPE')
-
-    print(tokenData['ID'])
     
     if(foto == None or foto == ''):
         

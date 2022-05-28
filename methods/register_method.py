@@ -111,7 +111,6 @@ def register_contratante_pj(nome, email, telefone, doc, senha):
                     type    = 2
                     )
                     tempAuthUser.save()
-                print('a')
                 return response_build.message_response(200, '112', 'REGISTER_SUCCESS')
             try:
                 login_attemp = login_system(email, senha)

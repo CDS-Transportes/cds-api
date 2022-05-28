@@ -1,4 +1,4 @@
-from flask import Flask, request, Response
+from flask import Flask, request, Response, send_from_directory
 from flask_cors import cross_origin
 from docs.init_docs import init_docs
 
@@ -62,5 +62,10 @@ def services_route():
     response = direct_services_method(request)
     return response
 
+
+@cds_api.route("/public/perfil/<path:path>")
+@cross_origin()
+def send_perfil_img(path):
+    return send_from_directory("public_resources/img/perfil", path)
 
 cds_api.run(debug=True)

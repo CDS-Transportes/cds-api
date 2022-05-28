@@ -1,4 +1,5 @@
 from flask import jsonify
+from system_methods.get_nome_prestadora import get_nome
 
 def message_response(status:int, cod:str, message:str):
 
@@ -30,42 +31,76 @@ def pefil_success(cod, bio, uf, cidade, foto):
 
 
 def index_response(perfis, page):
+
+    isReturned = False
     
-    respJson = '[{"COD": "603", "PERFIS":'
+    respJson = '{"COD": "603", "PERFIS":['
     
     for perfil in perfis:
 
-        respJson += '{"BIO": "'+perfil.biografia+'", "FOTO": "'+perfil.foto+'", "UF": "'+perfil.uf+'", "CIDADE": "'+perfil.cidade+'"},'
+        nome = get_nome(perfil.id_prestador_id)
+
+        isReturned = True
+
+        respJson += '{"BIO": "'+perfil.biografia+'", "FOTO": "'+perfil.foto+'", "UF": "'+perfil.uf+'", "CIDADE": "'+perfil.cidade+'", "NOME": "'+nome+'"},'
         
-    respJson += '}]'
-    
-    respJson = respJson.replace(',}]', '}]')
-    
+
+    if(isReturned):
+        respJson += ']'
+        respJson = respJson.replace(',]', ']}')
+            
+    else:
+        respJson = respJson.replace("603", "604")
+        respJson += ']}'
+
     return respJson, 200
 
+
+
+
 def collaborators_response(collaborators):
-    respJson = '[{"COD": "728", "COLABORADORES":'
+
+    isReturned = False
+
+    respJson = '{"COD": "728", "COLABORADORES":['
 
     for colab in collaborators:
 
+        isReturned = True
+
         respJson += '{"NOME": "'+str(colab.nome)+'", "NIVEL": "'+str(colab.nivel)+'", "EMAIL": "'+str(colab.email)+'"},'
 
-    respJson += '}]'
+    if(isReturned):
+        respJson += ']'
+        respJson = respJson.replace(',]', ']}')
+            
+    else:
+        respJson = respJson.replace("728", "729")
+        respJson += ']}'
 
-    respJson = respJson.replace(',}]', '}]')
 
     return respJson, 200
 
 
 def services_response(services):
-    respJson = '[{"COD": "516", "SERVICOS":'
+
+    isReturned = False
+
+    respJson = '[{"COD": "516", "SERVICOS":['
 
     for servico in services:
 
+        isReturned = False
+
         respJson += '{"SERV_COD": "'+str(servico.serv_cod)+'", "ID_PRESTADOR": "'+str(servico.id_prestador)+'", "ENDR_INICIAL": "'+str(servico.endr_inical)+'", "ENDR_FINAL": "'+str(servico.endr_final)+'", "STATUS": "'+str(servico.status)+'"},'
 
-    respJson += '}]'
 
-    respJson = respJson.replace(',}]', '}]')
+    if(isReturned):
+        respJson += ']'
+        respJson = respJson.replace(',]', ']}')
+            
+    else:
+        respJson = respJson.replace("516", "517")
+        respJson += ']}'
 
     return respJson, 200

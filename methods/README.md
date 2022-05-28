@@ -62,7 +62,8 @@
 | ------ | ------ | ------ | ------ |
 | 400 | 601 | MISSING_INPUT | Nem todos os inputs foram enviados |
 | 401 | 602 | INVALID_TOKEN | O token enviado não é válido |
-| 400 | 603 | PERFIS | Index de transportadores retornado com sucesso |
+| 200 | 603 | PERFIS | Index de transportadores retornado com sucesso |
+| 200 | 604 | PERFIS | Index de transportadores não retornou nenhum perfil |
 
 
 ## Retornos de collaborator
@@ -84,5 +85,6 @@
 | 400 | 719, 722 | COLLABORATOR_NOT_EXIST | Colaborador não existe |
 | 200 | 726 | COLLABORATOR_UPDATED | Colaborador atualizado com sucesso |
 | 200 | 728 | COLABORADORES | Lista de colaboradores retornada com sucesso |
+| 200 | 729 | COLABORADORES | Nenhum colaborador retornado |
 
 
