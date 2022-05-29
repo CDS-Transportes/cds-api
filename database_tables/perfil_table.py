@@ -15,7 +15,7 @@ class Perfil_Prestador(BaseModel):
 
     id_prestador = ForeignKeyField(Prestador, backref='idpj', unique=True)
     biografia    = TextField(null=True)
-    foto         = CharField(max_length=160, null=True)
+    foto         = CharField(max_length=160, default="http://127.0.0.1:5000/public/perfil/default.webp")
     uf           = CharField(max_length=2, null=True)
     cidade       = CharField(max_length=20, null=True)
 
