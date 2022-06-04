@@ -1,5 +1,5 @@
 from flask import jsonify
-from system_methods.get_nome_prestadora import get_nome
+from system_methods.get_transp_info import get_transp_info
 
 def message_response(status:int, cod:str, message:str):
 
@@ -38,11 +38,11 @@ def index_response(perfis, page):
     
     for perfil in perfis:
 
-        nome = get_nome(perfil.id_prestador_id)
+        nome, id = get_transp_info(perfil.id_prestador_id)
 
         isReturned = True
 
-        respJson += '{"BIO": "'+perfil.biografia+'", "FOTO": "'+perfil.foto+'", "UF": "'+perfil.uf+'", "CIDADE": "'+perfil.cidade+'", "NOME": "'+nome+'"},'
+        respJson += '{"BIO": "'+perfil.biografia+'", "FOTO": "'+perfil.foto+'", "UF": "'+perfil.uf+'", "CIDADE": "'+perfil.cidade+'", "NOME": "'+nome+'", "ID": "'+id+'"},'
         
 
     if(isReturned):
