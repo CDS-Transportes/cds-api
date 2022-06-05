@@ -42,7 +42,7 @@ def index_response(perfis, page):
 
         isReturned = True
 
-        respJson += '{"BIO": "'+perfil.biografia+'", "FOTO": "'+perfil.foto+'", "UF": "'+perfil.uf+'", "CIDADE": "'+perfil.cidade+'", "NOME": "'+nome+'", "ID": "'+id+'"},'
+        respJson += '{"BIO": "'+perfil.biografia+'", "FOTO": "'+perfil.foto+'", "UF": "'+perfil.uf+'", "CIDADE": "'+perfil.cidade+'", "NOME": "'+nome+'", "ID": "'+id+'",  "AVALIACAO": 5},'
         
 
     if(isReturned):

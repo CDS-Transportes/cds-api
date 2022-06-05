@@ -1,4 +1,3 @@
-import imp
 from flask import request
 
 import system_methods.response_build as response_build
@@ -10,9 +9,10 @@ from database_tables.perfil_table import Perfil_Prestador
 
 
 def get_perfil(request):
-    token = request.args.get('token')
+    token    = request.args.get('token')
+    idToShow = request.args.get('id')
 
-    if(token == None):
+    if(token == None or idToShow == None):
         return response_build.message_response(400, '401', 'MISSING_INPUT')
 
     isValidToeken, tokenData = jwt.valid(token)
@@ -20,11 +20,9 @@ def get_perfil(request):
     if(not isValidToeken):
         return response_build.message_response(401, '402', 'INVALID_TOKEN')
 
-    if(tokenData['TYPE'] != 1):
-        return response_build.message_response(401, '403', 'INVALID_USER_TYPE')
 
     try:
-        tempPerfil = Perfil_Prestador.select().where(Perfil_Prestador.id_prestador == tokenData['ID']).get()
+        tempPerfil = Perfil_Prestador.select().where(Perfil_Prestador.id_prestador == idToShow).get()
 
         return response_build.pefil_success('404', tempPerfil.biografia, tempPerfil.uf, tempPerfil.cidade, tempPerfil.foto)
 
